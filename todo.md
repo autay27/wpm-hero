@@ -4,7 +4,6 @@ Frontend
 - Write 1 test
 
 Backend
-- init spring boot application
 - set up communication with frontend
 - Write 1 test
 
