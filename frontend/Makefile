@@ -1,0 +1,5 @@
+ 
+all: codemirror
+
+codemirror:
+	node_modules/.bin/rollup editor.mjs -f iife -o editor.bundle.js   -p @rollup/plugin-node-resolve --name "codemirror"

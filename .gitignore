@@ -1,0 +1,7 @@
+# compiled files
+
+frontend/node_modules/**
+
+# kate
+
+*.kate-swp
