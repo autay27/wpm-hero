@@ -1,5 +1,4 @@
 Frontend
-- Simple win / lose condition (eg. characters > set amount) & display it
 - Send the win / loss to the backend
 - Display wins / losses so far
 - Write 1 test
