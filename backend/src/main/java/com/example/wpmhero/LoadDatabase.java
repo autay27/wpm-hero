@@ -1,5 +1,5 @@
  
-package com.example.restservice;
+package com.example.wpmhero;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

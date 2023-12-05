@@ -1,5 +1,5 @@
  
-package com.example.restservice;
+package com.example.wpmhero;
 
 import java.util.List;
 

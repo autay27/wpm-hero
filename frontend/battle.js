@@ -43,22 +43,22 @@ function endBattle(elapsed) {
 
 }
 
-async function postBattleOutcome(result, charsWritten, timeSpent) {
+async function postBattleOutcome(outcome, charsWritten, timeSpent) {
 
-    const outcome = {
-        result: result,
-        written: charsWritten,
+    const newOutcome = {
+        outcome: outcome,
+        wordsWritten: charsWritten,
         timeSpent: timeSpent
     }
 
     try {
-        const response = await fetch("http://localhost:8080/battle-result",
+        const response = await fetch("http://localhost:8080/outcome",
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(outcome)
+                body: JSON.stringify(newOutcome)
             }
         )
 

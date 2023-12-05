@@ -9,4 +9,9 @@ Backend
 
 Plans
 - nodejs events
-- Change character count to word count
+- Change character count to word count (needs some thought put in)
+    - Final wordcount
+    - Words written (how to record)
+    - Words deleted?
+
+- Codemirror to mimic markdown rendering

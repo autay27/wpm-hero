@@ -1,9 +1,10 @@
  
-package com.example.restservice;
+package com.example.wpmhero;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+
 
 @Entity
 class Outcome {
@@ -22,11 +23,22 @@ class Outcome {
     }
 
     public String getOutcome() {
+
         return this.outcome.toString();
     }
+    public String getWordsWritten() {
+
+        return this.wordsWritten.toString();
+    }
+    public String getTimeSpent() {
+
+        return this.timeSpent.toString();
+    }
+
 
     @Override
     public String toString() {
-        return "Outcome toString function needs to be written";
+        return "{outcome: " + this.outcome + ", wordsWritten: " + this.wordsWritten + ", timeSpent: " + this.timeSpent + "}";
     }
+    // Should be a nice way to print it with jackson
 }
