@@ -1,4 +1,5 @@
 Frontend
+- SWITCH TO TYPESCRIPT
 - Display wins / losses so far
 - Write 1 test
 
