@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="en">
   <head>
-  <script src="editor.bundle.js"></script>
-  <script src="battle.js"></script>
-
-    <meta charset="utf-8">
-    <title></title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Svelte + TS</title>
   </head>
   <body>
-    <header></header>
-    <main>
-        <button id="startbutton" onclick="startBattle()">Start Writing</button>
-        <div>Current Character Count: <div id="charcount"></div></div>
-        <div>Time Remaining: <div id="timer"></div></div>
-        <div id="editor"></div>
-    </main>
-    <footer></footer>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

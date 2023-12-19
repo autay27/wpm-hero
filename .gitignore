@@ -1,7 +1,9 @@
 # compiled files
 
-frontend/node_modules/**
-
 # kate
 
 *.kate-swp
+
+# old
+
+frontend_old/**
