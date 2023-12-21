@@ -1,16 +1,16 @@
 <script lang="ts">
 
-    var timerStarted = false
+    var started = false
     var endTime = new Date
+    export var finished = false
 
     function remaining(): Date | null {
         let elapsed = endTime.getTime() - new Date().getTime()
-        if (timerStarted && elapsed > 0) {
+        if (started && elapsed > 0) {
             return new Date(elapsed)
         } else {
-            timerStarted = false
+            started = false
             return null
-            //endBattle(elapsed)
         }
     }
 
@@ -25,14 +25,15 @@
 
     var interval: number
 
-    function startTimer() {
+    function start() {
         
-        console.assert(!timerStarted, "Restarting an already started timer")
+        console.assert(!started, "Restarting an already started timer")
         let battleTime = 0.1
         let timeUnitsToMs = 1000 * 60 //minutes
 
         endTime = new Date(new Date().getTime() + (battleTime * timeUnitsToMs))
-        timerStarted = true
+        started = true
+        finished = false
 
         const r = remaining()
         if (r) trstring = formatAsTime(r)
@@ -42,21 +43,24 @@
                 trstring = formatAsTime(r)
             } else {
                 trstring = "Challenge Over"
-                stopTimer()
+                stop()
             }
         }, 900);
     }
 
-    function stopTimer() {
+    function stop() {
         clearInterval(interval);
+        finished = true;
     }
 
 
 </script>
 
 
-{#if timerStarted}
+{#if started}
 Time Remaining: {trstring}
+{:else if finished}
+Time's Up!
 {:else}
-<button on:click={startTimer}>Start Writing</button>
+<button on:click={start}>Start Writing</button>
 {/if}
