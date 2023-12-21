@@ -1,11 +1,11 @@
 <script lang="ts">
     import Editor from './Editor.svelte'
-    import { Timer } from './Timer'
+    import Timer from './Timer.svelte'
+    /*import { Timer } from './Timer'
 
     let timer = new Timer
 
-    let wordcount = 0
-    let totalwritten = 0
+    
     
     var trstring = ""
 
@@ -40,14 +40,15 @@
         clearInterval(interval);
     }
 
+    */
+let wordcount = 0
+    let totalwritten = 0
 
 </script>
 
-{#if active}
-    Time Remaining: {trstring}
-{:else}
-    <button on:click={startTimer}>Start Writing</button>
-{/if}
+
+
+<Timer />
 
 <p>Your wordcount is...{wordcount}</p>
 <p>Your total words written is...{totalwritten}</p>
