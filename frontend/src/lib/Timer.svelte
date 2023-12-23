@@ -1,11 +1,20 @@
 <script lang="ts">
 
+import type { Millis, Challenge } from './ChallengeUtils';
+
+    export let chall: Challenge
+
     var started = false
-    var endTime = new Date
-    export var finished = false
+    export let finished = false
+    var endTime: Millis 
+    export let elapsed: Millis
+
+    function updateElapsed() {
+        elapsed = endTime - new Date().getTime()
+    }
 
     function remaining(): Date | null {
-        let elapsed = endTime.getTime() - new Date().getTime()
+        updateElapsed()
         if (started && elapsed > 0) {
             return new Date(elapsed)
         } else {
@@ -22,16 +31,14 @@
     }
 
     // Start & stop the timer
-
     var interval: number
 
     function start() {
         
         console.assert(!started, "Restarting an already started timer")
-        let battleTime = 0.1
         let timeUnitsToMs = 1000 * 60 //minutes
 
-        endTime = new Date(new Date().getTime() + (battleTime * timeUnitsToMs))
+        endTime = new Date().getTime() + chall.time
         started = true
         finished = false
 
@@ -50,6 +57,7 @@
 
     function stop() {
         clearInterval(interval);
+        elapsed = chall.time;
         finished = true;
     }
 

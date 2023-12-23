@@ -2,18 +2,29 @@
     import Editor from './Editor.svelte'
     import Timer from './Timer.svelte'
     import {handleOutcome} from './ChallengeUtils'
+    import type { Challenge, ChallengeAttempt } from './ChallengeUtils';
     
-    let wordcount = 0
-    let totalwritten = 0
-    let finished = false
-    $: won = outcome(finished, wordcount, totalwritten)
+    let chall: Challenge = // Make it a parameter later
+        {
+            wordcount: 5,
+            totalwritten: null,
+            time: 5000
+        }
 
-    function outcome(fin: boolean, wc: number, tw: number): boolean {
-        const target = 5 //What I really want is to have a Challenge datastructure with the time limit and params to determind win
-        //also a Performance(?) data structure with the word count, target words, time spent, whatever else might be relevant
+    let att: ChallengeAttempt = 
+        {
+            wordcount: 0,
+            totalwritten: 0,
+            timeSpent: 0
+        }
+
+    let finished = false
+    $: won = outcome(finished, att)
+
+    function outcome(fin: boolean, att: ChallengeAttempt): boolean {
         var haveYouWon = false
         if (fin){
-            haveYouWon = handleOutcome(wc, target)
+            haveYouWon = handleOutcome(chall, att)
         }
 
         return haveYouWon
@@ -24,7 +35,7 @@
 
 
 
-<Timer bind:finished />
+<Timer bind:finished bind:elapsed={att.timeSpent} bind:chall />
 
 {#if finished && won}
 You Win!
@@ -32,7 +43,7 @@ You Win!
 You Lose!
 {/if}
 <hr>
-<p>Your wordcount is...{wordcount}</p>
-<p>Your total words written is...{totalwritten}</p>
+<p>Your wordcount is...{att.wordcount}</p>
+<p>Your total words written is...{att.totalwritten}</p>
 
-<Editor bind:wordcount bind:totalwritten />
+<Editor bind:wordcount={att.wordcount} bind:totalwritten={att.totalwritten} />

@@ -1,21 +1,37 @@
+export type Millis = number
 
-export function handleOutcome(wc: number, target: number) {
-    if (wc < target){
-        postBattleOutcome(false, wc, 0)
+export type Challenge = {
+    wordcount: null | number
+    totalwritten: null | number
+    time: Millis
+}
+
+export type ChallengeAttempt = {
+    wordcount: number
+    totalwritten: number
+    timeSpent: Millis
+}
+
+export function handleOutcome(challenge: Challenge, attempt: ChallengeAttempt) {
+
+    console.assert(challenge.wordcount, "Only doing total wordcount challenges right now - target wc should not be null")
+
+    if (challenge.wordcount != null && attempt.wordcount < challenge.wordcount){
+        postBattleOutcome(false, challenge, attempt)
         return false
     } else {
-        postBattleOutcome(true, wc, 0)
+        postBattleOutcome(true, challenge, attempt)
         return true
     }
     
 }
 
-async function postBattleOutcome(outcome: boolean, wc: number, timeSpent: number) {
+async function postBattleOutcome(outcome: boolean, challenge: Challenge, attempt: ChallengeAttempt) {
 
     const newOutcome = {
         outcome: outcome,
-        wordsWritten: wc,
-        timeSpent: timeSpent
+        challenge: challenge,
+        attempt: attempt
     }
 
     try {
