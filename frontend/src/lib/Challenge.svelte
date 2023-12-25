@@ -1,20 +1,21 @@
 <script lang="ts">
     import Editor from './Editor.svelte'
     import Timer from './Timer.svelte'
-    import {handleOutcome} from './ChallengeUtils'
+    import {handleOutcome, challengeType } from './ChallengeUtils'
     import type { Challenge, ChallengeAttempt } from './ChallengeUtils';
     
     let chall: Challenge = // Make it a parameter later
         {
-            wordcount: 5,
-            totalwritten: null,
+            final: 5,
+            total: 0,
+            type: challengeType.Final,
             time: 5000
         }
-
+    
     let att: ChallengeAttempt = 
         {
-            wordcount: 0,
-            totalwritten: 0,
+            final: 0,
+            total: 0,
             timeSpent: 0
         }
 
@@ -43,7 +44,7 @@ You Win!
 You Lose!
 {/if}
 <hr>
-<p>Your wordcount is...{att.wordcount}</p>
-<p>Your total words written is...{att.totalwritten}</p>
+<p>Your wordcount is...{att.final}</p>
+<p>Your total words written is...{att.total}</p>
 
-<Editor bind:wordcount={att.wordcount} bind:totalwritten={att.totalwritten} />
+<Editor bind:wordcount={att.final} bind:totalwritten={att.total} />

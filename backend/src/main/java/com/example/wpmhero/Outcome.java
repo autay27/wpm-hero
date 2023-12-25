@@ -11,34 +11,72 @@ class Outcome {
 
     private @Id @GeneratedValue Long id;
     private Boolean outcome;
-    private Integer wordsWritten;
-    private Integer timeSpent;
+
+    private Integer challFinal;
+    private Integer challTotal;
+    private Integer challType;
+    private Integer challTime;
+
+    private Integer attFinal;
+    private Integer attTotal;
+    private Integer attTimeSpent;
+
+   
 
     Outcome() {}
 
-    Outcome(Boolean outcome, Integer wordsWritten, Integer timeSpent) {
+    Outcome(Boolean outcome, Integer challFinal, Integer challTotal, Integer challType, Integer challTime, Integer attFinal, Integer attTotal, Integer attTimeSpent) {
+
         this.outcome = outcome;
-        this.wordsWritten = wordsWritten;
-        this.timeSpent = timeSpent;
+
+        this.challFinal = challFinal;
+        this.challTotal = challTotal;
+        this.challType = challType;
+        this.challTime = challTime;
+
+        this.attFinal = attFinal;
+        this.attTotal = attTotal;
+        this.attTimeSpent = attTimeSpent;
     }
 
     public String getOutcome() {
 
         return this.outcome.toString();
     }
-    public String getWordsWritten() {
 
-        return this.wordsWritten.toString();
-    }
-    public String getTimeSpent() {
-
-        return this.timeSpent.toString();
+    // Getters for challenge fields
+    public int getChallFinal() {
+        return challFinal;
     }
 
+    public int getChallTotal() {
+        return challTotal;
+    }
+
+    public int getChallType() {
+        return challType;
+    }
+
+    public int getChallTime() {
+        return challTime;
+    }
+
+    // Getters for attempt fields
+    public int getAttFinal() {
+        return attFinal;
+    }
+
+    public int getAttTotal() {
+        return attTotal;
+    }
+
+    public int getAttTimeSpent() {
+        return attTimeSpent;
+    }
 
     @Override
     public String toString() {
-        return "{outcome: " + this.outcome + ", wordsWritten: " + this.wordsWritten + ", timeSpent: " + this.timeSpent + "}";
+        return "{outcome: " + this.outcome + ", rest of fields omitted}";
     }
     // Should be a nice way to print it with jackson
 }

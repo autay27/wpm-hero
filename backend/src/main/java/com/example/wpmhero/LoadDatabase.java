@@ -16,7 +16,7 @@ class LoadDatabase {
   CommandLineRunner initDatabase(OutcomeRepository repository) {
 
     return args -> {
-      log.info("Preloading " + repository.save(new Outcome(true, 1, 1000)));
+      log.info("Preloading " + repository.save(new Outcome(true, 5, 0, 0, 10000, 5, 5, 5000)));
     };
   }
 }

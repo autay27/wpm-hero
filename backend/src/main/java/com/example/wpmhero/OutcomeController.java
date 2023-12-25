@@ -28,9 +28,7 @@ public class OutcomeController {
 
 	@PostMapping("/outcome")
 	public Outcome outcome(@RequestBody Outcome o) {
-
 		return repository.save(o);
-
 	}
 
 	@GetMapping("/alloutcomes")
