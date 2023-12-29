@@ -1,6 +1,8 @@
  
 package com.example.wpmhero;
 
+import org.springframework.core.style.ToStringCreator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -76,7 +78,16 @@ class Outcome {
 
     @Override
     public String toString() {
-        return "{outcome: " + this.outcome + ", rest of fields omitted}";
+        return new ToStringCreator(this)
+            .append("outcome", this.outcome)
+            .append("challFinal", this.challFinal)
+            .append("challTotal", this.challTotal)
+            .append("challType", this.challType)
+            .append("challTime", this.challTime)
+            .append("attFinal", this.attFinal)
+            .append("attTotal", this.attTotal)
+            .append("attTimeSpent", this.attTimeSpent)
+            .toString();
     }
     // Should be a nice way to print it with jackson
 }
