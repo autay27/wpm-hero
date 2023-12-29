@@ -22,10 +22,13 @@
     let finished = false
     $: won = outcome(finished, att)
 
-    function outcome(fin: boolean, att: ChallengeAttempt): boolean {
+    function outcome(fin: boolean, attempt: ChallengeAttempt): boolean {
         var haveYouWon = false
         if (fin){
-            haveYouWon = handleOutcome(chall, att)
+            haveYouWon = handleOutcome(chall, attempt)
+        } else if (chall.type == challengeType.Final && attempt.final >= chall.final){
+            finished = true
+            haveYouWon = handleOutcome(chall, attempt)
         }
 
         return haveYouWon

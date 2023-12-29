@@ -46,7 +46,7 @@ import type { Millis, Challenge } from './ChallengeUtils';
         if (r) trstring = formatAsTime(r)
         interval = setInterval(() => {
             const r = remaining()
-            if (r) {
+            if (r && !finished) {
                 trstring = formatAsTime(r)
             } else {
                 trstring = "Challenge Over"
