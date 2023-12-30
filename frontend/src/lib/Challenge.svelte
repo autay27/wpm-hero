@@ -38,7 +38,7 @@
 </script>
 
 
-
+<br>
 <Timer bind:finished bind:elapsed={att.timeSpent} bind:chall />
 
 {#if finished && won}

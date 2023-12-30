@@ -1,4 +1,5 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 
 import {basicSetup} from "codemirror"
 import {EditorView, keymap} from "@codemirror/view"
@@ -24,7 +25,7 @@ let updateListenerExtension = EditorView.updateListener.of((viewUpdate) => {
 let container: HTMLDivElement;
 let ev: EditorView;
 
-window.onload = function() {
+onMount(async () => {
   ev = new EditorView({
   extensions: [
     basicSetup,
@@ -38,7 +39,7 @@ window.onload = function() {
   ev.dispatch({
     changes: {from: 0, to: 0, insert: exampleCode}
   })
-}
+})
 
 </script>
 
