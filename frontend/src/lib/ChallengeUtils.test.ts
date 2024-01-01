@@ -7,7 +7,7 @@ test('fail test when not enough final', () => {
 
     let chall: Challenge = 
     {
-        final: 5,
+        finalWords: 5,
         total: 0,
         type: challengeType.Final,
         time: 5000
@@ -15,7 +15,7 @@ test('fail test when not enough final', () => {
 
     let att: ChallengeAttempt = 
     {
-        final: 0,
+        finalWords: 0,
         total: 0,
         timeSpent: 0
     }
@@ -28,7 +28,7 @@ test('pass test when enough final', () => {
 
     let chall: Challenge = 
     {
-        final: 5,
+        finalWords: 5,
         total: 0,
         type: challengeType.Final,
         time: 5000
@@ -36,7 +36,7 @@ test('pass test when enough final', () => {
 
     let att: ChallengeAttempt = 
     {
-        final: 5,
+        finalWords: 5,
         total: 0,
         timeSpent: 0
     }

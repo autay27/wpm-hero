@@ -8,7 +8,7 @@ public class OutcomeTest {
     @Test
 	void toStringTest() throws Exception {
 
-        final Outcome myOutcome = new Outcome(true, 5, 0, 0, 10000, 5, 5, 5000);
+        final Outcome myOutcome = new Outcome(true, new Challenge(5, 0, 0, 10000), new Attempt(5, 5, 5000));
 
         assertThat(myOutcome.toString()).contains("true", "10000", "5000");
 	}

@@ -6,7 +6,7 @@
     
     let chall: Challenge = // Make it a parameter later
         {
-            final: 5,
+            finalWords: 5,
             total: 0,
             type: challengeType.Final,
             time: 5000
@@ -14,7 +14,7 @@
     
     let att: ChallengeAttempt = 
         {
-            final: 0,
+            finalWords: 0,
             total: 0,
             timeSpent: 0
         }
@@ -26,7 +26,7 @@
         var haveYouWon = false
         if (fin){
             haveYouWon = handleOutcome(chall, attempt)
-        } else if (chall.type == challengeType.Final && attempt.final >= chall.final){
+        } else if (chall.type == challengeType.Final && attempt.finalWords >= chall.finalWords){
             finished = true
             haveYouWon = handleOutcome(chall, attempt)
         }
@@ -47,7 +47,7 @@ You Win!
 You Lose!
 {/if}
 <hr>
-<p>Your wordcount is...{att.final}</p>
+<p>Your wordcount is...{att.finalWords}</p>
 <p>Your total words written is...{att.total}</p>
 
-<Editor bind:wordcount={att.final} bind:totalwritten={att.total} />
+<Editor bind:wordcount={att.finalWords} bind:totalwritten={att.total} />

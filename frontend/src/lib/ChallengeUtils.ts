@@ -5,14 +5,14 @@ export enum challengeType {
 }
 
 export type Challenge = {
-    final: number
+    finalWords: number
     total: number
     type: challengeType
     time: Millis
 }
 
 export type ChallengeAttempt = {
-    final: number
+    finalWords: number
     total: number
     timeSpent: Millis
 }
@@ -21,7 +21,7 @@ export function handleOutcome(challenge: Challenge, attempt: ChallengeAttempt) {
 
     console.assert(challenge.type == challengeType.Final, "Only doing total wordcount challenges right now - target wc should not be null")
 
-    if (attempt.final < challenge.final){
+    if (attempt.finalWords < challenge.finalWords){
         postBattleOutcome(false, challenge, attempt)
         return false
     } else {
@@ -35,14 +35,11 @@ async function postBattleOutcome(outcome: boolean, challenge: Challenge, attempt
 
     const newOutcome = {
         outcome: outcome,
-        challFinal: challenge.final,
-        challTotal: challenge.total,
-        challType: challenge.type,
-        challTime: challenge.time,
-        attFinal: attempt.final,
-        attTotal: attempt.total,
-        attTimeSpent: attempt.timeSpent
+        challenge: challenge,
+        attempt: attempt
     }
+
+    console.log(newOutcome)
 
     try {
         const response = await fetch("http://localhost:8080/outcome",
