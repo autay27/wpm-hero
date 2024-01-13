@@ -20,10 +20,10 @@
         }
 
     let finished = false
-    $: won = outcome(finished, att)
+    var haveYouWon = false
+    $: won = haveYouWon || outcome(finished, att)
 
     function outcome(fin: boolean, attempt: ChallengeAttempt): boolean {
-        var haveYouWon = false
         if (fin){
             haveYouWon = handleOutcome(chall, attempt)
         } else if (chall.type == challengeType.Final && attempt.finalWords >= chall.finalWords){
