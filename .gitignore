@@ -1,8 +1,11 @@
 # compiled files
 
-# kate
+# text editors temp files
 
 *.kate-swp
+*~
+*.swp
+*.swo
 
 # old
 
