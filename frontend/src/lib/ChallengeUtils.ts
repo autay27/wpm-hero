@@ -15,6 +15,7 @@ export type ChallengeAttempt = {
     finalWords: number
     total: number
     timeSpent: Millis
+    timeStarted: Date | null
 }
 
 export function handleOutcome(challenge: Challenge, attempt: ChallengeAttempt) {

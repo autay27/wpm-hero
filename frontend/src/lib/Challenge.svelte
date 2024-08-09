@@ -16,7 +16,8 @@
         {
             finalWords: 0,
             total: 0,
-            timeSpent: 0
+            timeSpent: 0,
+            timeStarted: null,
         }
 
     let finished = false
@@ -39,7 +40,9 @@
 
 
 <br>
-<Timer bind:finished bind:elapsed={att.timeSpent} bind:chall />
+<Timer bind:finished bind:elapsedMs={att.timeSpent}
+       bind:timeStarted={att.timeStarted}
+       bind:chall />
 
 {#if finished && won}
 You Win!
@@ -47,7 +50,7 @@ You Win!
 You Lose!
 {/if}
 <hr>
-<p>Your wordcount is...{att.finalWords}</p>
+<p>Your wordcount is...{att.finalWords}/{chall.finalWords}</p>
 <p>Your total words written is...{att.total}</p>
 
 <Editor bind:wordcount={att.finalWords} bind:totalwritten={att.total} />

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import type { Challenge, ChallengeAttempt } from './ChallengeUtils';
+import {formatCustomDate} from "./utils";
 
 interface Outcome {
     outcome : boolean,
@@ -16,8 +17,9 @@ function printOutcome(o: Outcome): string {
     let words = o.challenge.finalWords
     let time = o.challenge.time
     let outcome = o.outcome ? "Success" : "Failure"
+    let dateString = o.attempt.timeStarted !== null ? formatCustomDate(new Date(o.attempt.timeStarted)) : "Error: No date on record"
 
-    return `Challenge: Write ${words} words in ${time/1000} seconds. Result: ${outcome}`
+    return `${dateString}: Challenge: Write ${words} words in ${time/1000} seconds. Result: ${outcome}`
 }
 
 onMount(async () =>{

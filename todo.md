@@ -1,11 +1,9 @@
 Frontend
-- SWITCH TO TYPESCRIPT
-- Sensible classes
-- Display wins / losses so far
-- Write 1 test
+- Display wins / losses with a humanreadable timestamp 
+- Write 1 property test
 
 Backend
-- Write 1 test
+- Property testing?
 
 Plans
 - react or svelte multipage website + event listening for the timer

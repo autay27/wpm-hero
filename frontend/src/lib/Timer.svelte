@@ -6,19 +6,18 @@ import type { Millis, Challenge } from './ChallengeUtils';
 
     var started = false
     export let finished = false
-    var endTime: Millis 
-    export let elapsed: Millis
-
+    var endTimeMs: Millis
+    export let elapsedMs: Millis
+    export let timeStarted: Date | null = null
     function updateElapsed() {
-        elapsed = endTime - new Date().getTime()
+        elapsedMs = endTimeMs - new Date().getTime()
     }
 
     function remaining(): Date | null {
         updateElapsed()
-        if (started && elapsed > 0) {
-            return new Date(elapsed)
+        if (started && elapsedMs > 0) {
+            return new Date(elapsedMs)
         } else {
-            started = false
             return null
         }
     }
@@ -38,7 +37,8 @@ import type { Millis, Challenge } from './ChallengeUtils';
         console.assert(!started, "Restarting an already started timer")
         let timeUnitsToMs = 1000 * 60 //minutes
 
-        endTime = new Date().getTime() + chall.time
+        timeStarted = new Date()
+        endTimeMs = timeStarted.getTime() + chall.time
         started = true
         finished = false
 
@@ -57,7 +57,7 @@ import type { Millis, Challenge } from './ChallengeUtils';
 
     function stop() {
         clearInterval(interval);
-        elapsed = chall.time;
+        elapsedMs = chall.time;
         finished = true;
     }
 
