@@ -1,13 +1,11 @@
 Frontend
-- Display wins / losses with a humanreadable timestamp 
-- Write 1 property test
+- Menu of different challenges to choose from
+- more property testing
 
 Backend
 - Property testing?
 
 Plans
-- react or svelte multipage website + event listening for the timer
-
 - Codemirror to mimic markdown rendering
 - Saving + loading your writing
 - UI mockup

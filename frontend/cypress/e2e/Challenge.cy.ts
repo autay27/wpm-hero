@@ -1,3 +1,18 @@
+
+const model = { text: "" }
+class inputTextCommand{
+    private textToAdd: string;
+    constructor(textToAdd: string){
+        this.textToAdd = textToAdd
+    }
+
+    check = () => true
+
+    run(m: { text: string; }) {
+
+    }
+}
+
 describe('Challenge', () => {
     it('should allow text entry into the CodeMirror editor', () => {
         // Visit the page containing the component
