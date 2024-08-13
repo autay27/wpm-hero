@@ -1,11 +1,11 @@
 <script lang="ts">
 import { onMount } from 'svelte';
-import type { Challenge, ChallengeAttempt } from './ChallengeUtils';
+import type { ChallengeParams, ChallengeAttempt } from './ChallengeUtils';
 import {formatCustomDate} from "./utils";
 
 interface Outcome {
     outcome : boolean,
-    challenge : Challenge,
+    challenge : ChallengeParams,
     attempt: ChallengeAttempt
 }
    

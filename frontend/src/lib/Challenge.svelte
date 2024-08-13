@@ -2,9 +2,9 @@
     import Editor from './Editor.svelte'
     import Timer from './Timer.svelte'
     import {handleOutcome, challengeType } from './ChallengeUtils'
-    import type { Challenge, ChallengeAttempt } from './ChallengeUtils';
+    import type { ChallengeParams, ChallengeAttempt } from './ChallengeUtils';
     
-    let chall: Challenge = // Make it a parameter later
+    let chall: ChallengeParams = // Make it a parameter later
         {
             finalWords: 5,
             total: 0,

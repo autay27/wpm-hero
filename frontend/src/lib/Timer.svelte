@@ -1,8 +1,8 @@
 <script lang="ts">
 
-import type { Millis, Challenge } from './ChallengeUtils';
+import type { Millis, ChallengeParams } from './ChallengeUtils';
 
-    export let chall: Challenge
+    export let chall: ChallengeParams
 
     var started = false
     export let finished = false

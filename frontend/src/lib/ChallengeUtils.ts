@@ -4,7 +4,7 @@ export enum challengeType {
     Final, Total
 }
 
-export type Challenge = {
+export type ChallengeParams = {
     finalWords: number
     total: number
     type: challengeType
@@ -18,7 +18,7 @@ export type ChallengeAttempt = {
     timeStarted: Date | null
 }
 
-export function handleOutcome(challenge: Challenge, attempt: ChallengeAttempt) {
+export function handleOutcome(challenge: ChallengeParams, attempt: ChallengeAttempt) {
 
     console.assert(challenge.type == challengeType.Final, "Only doing total wordcount challenges right now - target wc should not be null")
 
@@ -32,7 +32,7 @@ export function handleOutcome(challenge: Challenge, attempt: ChallengeAttempt) {
     
 }
 
-async function postBattleOutcome(outcome: boolean, challenge: Challenge, attempt: ChallengeAttempt) {
+async function postBattleOutcome(outcome: boolean, challenge: ChallengeParams, attempt: ChallengeAttempt) {
 
     const newOutcome = {
         outcome: outcome,
