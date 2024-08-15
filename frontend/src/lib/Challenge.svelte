@@ -50,7 +50,7 @@ You Win!
 You Lose!
 {/if}
 <hr>
-<p>Your wordcount is...{att.finalWords}/{chall.finalWords}</p>
+<div style="display: flex;"><p>Your wordcount is...</p><p id="final">{att.finalWords}</p><p>/</p><p id="target">{chall.finalWords}</p></div>
 <p>Your total words written is...{att.total}</p>
 
 <Editor bind:wordcount={att.finalWords} bind:totalwritten={att.total} />

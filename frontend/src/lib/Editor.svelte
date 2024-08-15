@@ -1,14 +1,15 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 
-import {basicSetup} from "codemirror"
+import {basicSetup, minimalSetup} from "codemirror"
 import {EditorView, keymap} from "@codemirror/view"
 import {indentWithTab} from "@codemirror/commands"
 
 import {wordCount, howManyWordsAdded} from "./EditorUtils"
+import {WPMHSetup} from "./Editor_CMConfig";
 
 
-const exampleCode = "Write Here\nand here "
+const exampleCode = ""
 
 export var wordcount = wordCount(exampleCode);
 export var totalwritten = 0;
@@ -28,7 +29,7 @@ let ev: EditorView;
 onMount(async () => {
   ev = new EditorView({
   extensions: [
-    basicSetup,
+    WPMHSetup,
     keymap.of([indentWithTab]),
     updateListenerExtension
   ],
