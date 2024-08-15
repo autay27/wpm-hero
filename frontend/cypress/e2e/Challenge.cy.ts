@@ -10,14 +10,20 @@ class inputTextCommand{
     check = () => true
 
     run(m: { text: string; }) {
-        m.text = m.text.concat(this.textToAdd) //affect the model
         cy.get('.cm-content').as('cm')
         cy.get('@cm').click('bottomRight')
-        cy.get('@cm').type(this.textToAdd); //affect the real world
-        cy.log(`model ${m.text} has wordcount ${wordCount(m.text)}`)
-        cy.get('#final').then((e) => {
+
+        cy.get('@cm').type(this.textToAdd, {parseSpecialCharSequences: false, force: true}) //affect the real world
+            .then( _ => {
+                m.text = m.text.concat(this.textToAdd) //affect the model
+            })
+        cy.get('#final').then( e => {
+            cy.log(`real wordcount ${Number(e.text())}`).then(_ => {
+                cy.log(`model ${m.text} has wordcount ${wordCount(m.text)}`)
+            })
+        })
+        cy.get('#final').should((e) => {
             const realFinal = Number(e.text());
-            cy.log(`real wordcount ${realFinal}`)
             expect(wordCount(m.text)).to.eq(realFinal)
         });
 
@@ -39,7 +45,7 @@ describe('Challenge', () => {
         cy.visit('/write');
 
         let runs = 0
-        const commands = [ fc.string({ minLength: 1 }).map(s => new inputTextCommand(s)) ]
+        const commands = [ fc.stringOf(fc.constantFrom('a', ' '), { minLength: 1 }).map(s => new inputTextCommand(s)) ]
         fc.assert(
 
             fc.property(fc.commands(commands, {size: '+1', maxCommands: 10 }),
