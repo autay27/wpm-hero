@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Challenge from './lib/Challenge.svelte'
+  import Challenge from './lib/Write.svelte'
   import Journal from './lib/Journal.svelte'
   import { Router, link, Route } from "svelte-routing";
 

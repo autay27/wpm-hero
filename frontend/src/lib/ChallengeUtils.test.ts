@@ -1,6 +1,5 @@
 import {handleOutcome, challengeType } from './ChallengeUtils'
 import type { ChallengeParams, ChallengeAttempt } from './ChallengeUtils';
-import Challenge from './Challenge.svelte'
 
 import { describe, it, expect, test } from 'vitest'
 import * as fc from 'fast-check'

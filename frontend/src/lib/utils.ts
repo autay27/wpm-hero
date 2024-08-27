@@ -1,3 +1,5 @@
+import type {Millis} from "./ChallengeUtils";
+
 export function formatCustomDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = {
         weekday: 'long',
@@ -9,4 +11,8 @@ export function formatCustomDate(date: Date): string {
     };
 
     return new Intl.DateTimeFormat('en-US', options).format(date);
+}
+
+export function millisToTime(ms: Millis): string {
+    return ms.toString()
 }

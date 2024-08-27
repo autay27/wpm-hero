@@ -11,12 +11,49 @@ export type ChallengeParams = {
     time: Millis
 }
 
+export type Challenge = {
+    name: string
+    params: ChallengeParams
+}
+
 export type ChallengeAttempt = {
     finalWords: number
     total: number
     timeSpent: Millis
     timeStarted: Date | null
 }
+
+export const menuOptions: Challenge[] = [
+    {
+        name: "easy and fast",
+        params: {
+            finalWords: 5,
+            total: 0,
+            type: challengeType.Final,
+            time: 5000
+        }
+    },
+
+    {
+        name: "easy and slow",
+        params: {
+            finalWords: 6,
+            total: 0,
+            type: challengeType.Final,
+            time: 50000
+        }
+    },
+
+    {
+        name: "difficult and slow",
+        params: {
+            finalWords: 50,
+            total: 0,
+            type: challengeType.Final,
+            time: 60000
+        }
+    }
+]
 
 export function handleOutcome(challenge: ChallengeParams, attempt: ChallengeAttempt) {
 
